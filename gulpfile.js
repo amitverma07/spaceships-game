@@ -1,10 +1,11 @@
 const { src, dest, watch, series } = require("gulp");
 const autoprefixer = require("gulp-autoprefixer");
 const cleanCSS = require("gulp-clean-css");
-const imagemin = require('gulp-imagemin');
-const babel = require('gulp-babel');
+const imagemin = require("gulp-imagemin");
+const babel = require("gulp-babel");
 const concat = require("gulp-concat");
-const uglify = require('gulp-uglify');
+const uglify = require("gulp-uglify");
+const gulpCopied = require("gulp-copy");
 
 function autoPrefix() {
   return src("./src/css/*.css")
@@ -39,7 +40,15 @@ function js() {
     .pipe(dest("./dist/js"));
 }
 
+function copyHTML() {
+  return src("./src/index.html", { base: 'src' })
+    .pipe(gulpCopied("./dist", { prefix: 1 }))
+    .pipe(dest("./dist"))
+    .pipe(browserSync.stream());
+}
+
 exports.autoPrefix = autoPrefix;
 exports.minifyCSS = minifyCSS;
 exports.imgMinify = imgMinify;
 exports.js = js;
+exports.copyHTML = copyHTML;
