@@ -1,6 +1,7 @@
 const { src, dest, watch, series } = require("gulp");
 const autoprefixer = require("gulp-autoprefixer");
 const cleanCSS = require("gulp-clean-css");
+const imagemin = require('gulp-imagemin');
 
 function autoPrefix() {
   return src("./src/css/*.css")
@@ -17,7 +18,12 @@ function minifyCSS() {
     .pipe(browserSync.stream());
 }
 
-
+function imgMinify() {
+  return src("./src/images/*")
+    .pipe(imagemin())
+    .pipe(dest("./dist/images"));
+}
 
 exports.autoPrefix = autoPrefix;
 exports.minifyCSS = minifyCSS;
+exports.imgMinify = imgMinify;
