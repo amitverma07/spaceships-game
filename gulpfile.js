@@ -2,6 +2,9 @@ const { src, dest, watch, series } = require("gulp");
 const autoprefixer = require("gulp-autoprefixer");
 const cleanCSS = require("gulp-clean-css");
 const imagemin = require('gulp-imagemin');
+const babel = require('gulp-babel');
+const concat = require("gulp-concat");
+const uglify = require('gulp-uglify');
 
 function autoPrefix() {
   return src("./src/css/*.css")
@@ -24,6 +27,19 @@ function imgMinify() {
     .pipe(dest("./dist/images"));
 }
 
+function js() {
+  return src(["./src/js/resources.js", "./src/js/app.js", "./src/js/engine.js"])
+    .pipe(babel({
+      presets: [
+        ['@babel/preset-env', { modules: false }]
+      ]
+    }))
+    .pipe(concat("main.js"))
+    .pipe(uglify())
+    .pipe(dest("./dist/js"));
+}
+
 exports.autoPrefix = autoPrefix;
 exports.minifyCSS = minifyCSS;
 exports.imgMinify = imgMinify;
+exports.js = js;
