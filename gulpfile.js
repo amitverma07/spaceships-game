@@ -6,6 +6,7 @@ const babel = require("gulp-babel");
 const concat = require("gulp-concat");
 const uglify = require("gulp-uglify");
 const gulpCopied = require("gulp-copy");
+const browserSync = require("browser-sync").create();
 
 function autoPrefix() {
   return src("./src/css/*.css")
