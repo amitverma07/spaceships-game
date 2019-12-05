@@ -53,3 +53,15 @@ exports.minifyCSS = minifyCSS;
 exports.imgMinify = imgMinify;
 exports.js = js;
 exports.copyHTML = copyHTML;
+
+exports.all = series(autoPrefix, minifyCSS, imgMinify, js, copyHTML, function () {
+  browserSync.init({
+    server: {
+      baseDir: "./dist"
+    }
+  });
+  watch('./src/css/*.css', cleanCSS);
+  watch('./src/js/*.js', js);
+  watch('./src/index.html', copyHTML);
+  watch('./src/images/*', imgMinify);
+});
