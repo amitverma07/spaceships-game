@@ -6,7 +6,6 @@ const babel = require("gulp-babel");
 const concat = require("gulp-concat");
 const uglify = require("gulp-uglify");
 const gulpCopied = require("gulp-copy");
-const browserSync = require("browser-sync").create();
 
 function autoPrefix() {
   return src("./src/css/*.css")
@@ -20,7 +19,6 @@ function minifyCSS() {
   return src("./src/css/*.css")
     .pipe(cleanCSS())
     .pipe(dest("./dist/css"))
-    .pipe(browserSync.stream());
 }
 
 function imgMinify() {
@@ -45,7 +43,12 @@ function copyHTML() {
   return src("./src/index.html", { base: 'src' })
     .pipe(gulpCopied("./dist", { prefix: 1 }))
     .pipe(dest("./dist"))
-    .pipe(browserSync.stream());
+}
+
+function watchAll () {
+  watch('./src/css/*.css', cleanCSS);
+  watch('./src/js/*.js', js);
+  watch('./src/index.html', copyHTML);
 }
 
 exports.autoPrefix = autoPrefix;
@@ -53,3 +56,5 @@ exports.minifyCSS = minifyCSS;
 exports.imgMinify = imgMinify;
 exports.js = js;
 exports.copyHTML = copyHTML;
+exports.watchAll = watchAll;
+ 
