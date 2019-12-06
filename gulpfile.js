@@ -1,4 +1,4 @@
-const { src, dest, watch, series } = require("gulp");
+const { src, dest, watch } = require("gulp");
 const autoprefixer = require("gulp-autoprefixer");
 const cleanCSS = require("gulp-clean-css");
 const imagemin = require("gulp-imagemin");
@@ -45,7 +45,7 @@ function copyHTML() {
     .pipe(dest("./dist"))
 }
 
-function watchAll () {
+function watchAllFiles () {
   watch('./src/css/*.css', cleanCSS);
   watch('./src/js/*.js', js);
   watch('./src/index.html', copyHTML);
@@ -56,5 +56,5 @@ exports.minifyCSS = minifyCSS;
 exports.imgMinify = imgMinify;
 exports.js = js;
 exports.copyHTML = copyHTML;
-exports.watchAll = watchAll;
+exports.watchAll = watchAllFiles;
  
