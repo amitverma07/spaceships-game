@@ -1,4 +1,4 @@
-const { src, dest, watch } = require("gulp");
+const { src, dest, watch, series } = require("gulp");
 const autoprefixer = require("gulp-autoprefixer");
 const cleanCSS = require("gulp-clean-css");
 const imagemin = require("gulp-imagemin");
@@ -58,3 +58,4 @@ exports.js = js;
 exports.copyHTML = copyHTML;
 exports.watchAll = watchAllFiles;
  
+exports.all = series(autoPrefix, minifyCSS, imgMinify, js, copyHTML, watchAllFiles);
