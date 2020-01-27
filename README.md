@@ -1,18 +1,11 @@
-# Classic Arcade Game Project
+# Udacity Classic Arcade Game
+This is a project from Udacity's Nanodegree program "Front-End Web Developer". The project consists on a game based on the arcade game Frogger by Konami.
 
-## Table of Contents
+# Run Game
+Click on "Clone or Download" on this repository page and download it as ZIP. Extract the folder content and open "index.html" from a brownser for the game to run.
 
-- [Instructions](#instructions)
-- [Contributing](#contributing)
+# Game Rules
+The goal of the game is to reach the Sun while avoiding getting hit by the bugs. When the player reaches the Sun you pass to the next level where the difficult increases making the bugs move faster. If you get hit you loose and go back to the first level.
 
-## Instructions
-
-Use this [rubric](https://review.udacity.com/#!/rubrics/15/view) for self-checking your submission.
-
-Make sure the functions you write are **object-oriented** - either class functions (like `Player` and `Enemy`) or class prototype functions such as `Enemy.prototype.checkCollisions`. Also make sure that the keyword `this` is used appropriately within your class and class prototype functions to refer to the object the function is called upon.
-
-Your **README.md** file should be updated with instructions on both how to 1. Run and 2. Play your arcade game.
-
-## Contributing
-
-This repository is the starter code for all students
+# Control
+Use the keyboard arrow keys to control the player movement direction.
