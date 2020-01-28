@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/amitverma07/spaceships-game/issues"
   },
-  "homepage": "https://amitverma07.github.io/spaceships-game/dist/",
+  "homepage": "https://github.com/amitverma07/spaceships-game",
   "devDependencies": {
     "@babel/core": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
